@@ -203,20 +203,11 @@ export class ChatGPTBot {
   // receive a message (main entry)
   async onMessage(message: Message) {
     const talker = message.talker();
-    let rawText1 = message.text();
+    let rawText = message.text();
     const room = message.room();
     const messageType = message.type();
     const isPrivateChat = !room;
-    conv.push(rawText1.toString())
-    if(conv.length >=8){
-      conv.shift();
-    }
-    console.log(rawText1)
-    console.log("conv is ---- ")
-    console.log(conv)
-    var rawText:string;
-    rawText = conv.join("\n ");
-    console.log(rawText)
+
     // do nothing if the message:
     //    1. is irrelevant (e.g. voice, video, location...), or
     //    2. doesn't trigger bot (e.g. wrong trigger-word)
@@ -226,8 +217,20 @@ export class ChatGPTBot {
     ) {
       return;
     }
+
+    conv.push(rawText.toString())
+    if(conv.length >=8){
+      conv.shift();
+    }
+    console.log(rawText)
+    console.log("conv is ---- ")
+    console.log(conv)
+    var rawText1:string;
+    rawText1 = conv.join("\n ");
+    console.log(rawText1)
+
     // clean the message for ChatGPT input
-    const text = this.cleanMessage(rawText, isPrivateChat);
+    const text = this.cleanMessage(rawText1, isPrivateChat);
     // reply to private or group chat
     if (isPrivateChat) {
       return await this.onPrivateMessage(talker, text);
