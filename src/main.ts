@@ -6,9 +6,9 @@ import { ChatGPTBot } from "./chatgpt.js";
 const weChatBot = WechatyBuilder.build({
   name: "my-wechat-bot",
   // puppet: "wechaty-puppet-wechat",
-  puppetOptions: {
-    uos: true, // 开启uos协议
-  },
+  // puppetOptions: {
+  //   uos: true, // 开启uos协议
+  // },
 
 });
 // ChatGPTBot instance

@@ -188,19 +188,17 @@ export class ChatGPTBot {
 
   // reply to group message
   async onGroupMessage(room: RoomInterface, text: string) {
-
-    conv.push(text.toString())
-    if(conv.length >= 8){
-      conv.shift();
-    }
-    var text1:string;
-    text1 = conv.join("\n");
-    console.log(text1)
-
     // get reply from ChatGPT
     const chatgptReplyMessage = await this.onChatGPT(text);
     // the reply consist of: original text and bot reply
     const result = `${text}\n ---------- \n ${chatgptReplyMessage}`;
+    // conv.push(chatgptReplyMessage.toString())
+    // if(conv.length >= 4){
+    //   conv.shift();
+    // }
+    // var text1:string;
+    // text1 = conv.join(" ");
+    // console.log(text1)
     await this.reply(room, result);
   }
 
@@ -230,10 +228,10 @@ export class ChatGPTBot {
     if (isPrivateChat) {
       return await this.onPrivateMessage(talker, text);
     } else {
-      conv.push(text.toString())
-      if(conv.length >=8){
-        conv.shift();
-      }
+      // conv.push(text.toString())
+      // if(conv.length >=4){
+      //   conv.shift();
+      // }
       // var rawText1:string;
       // rawText1 = conv.join("\n ");
       // console.log(rawText1)
