@@ -5,10 +5,11 @@ import { ChatGPTBot } from "./chatgpt.js";
 // Wechaty instance
 const weChatBot = WechatyBuilder.build({
   name: "my-wechat-bot",
+  puppet: "wechaty-puppet-wechat",
   puppetOptions: {
     uos: true, // 开启uos协议
   },
-  // puppet: "wechaty-puppet-wechat",
+
 });
 // ChatGPTBot instance
 const chatGPTBot = new ChatGPTBot();
