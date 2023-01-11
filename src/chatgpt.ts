@@ -14,6 +14,9 @@ const ChatGPTModelConfig = {
   // add your ChatGPT model parameters below
   temperature: 0.3,
   max_tokens: 2000,
+  top_p: 1,
+  frequency_penalty: 0,
+  presence_penalty: 0,
 };
 
 // message size for a single reply by the bot
