@@ -11,8 +11,8 @@ COPY package*.json ./
 COPY pyproject.toml ./
 COPY poetry.lock ./
 # Install dependencies
-#ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
-ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=false
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+#ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=false
 
 RUN poetry install && npm install && rm -rf ~/.npm/
 COPY . .
