@@ -202,15 +202,18 @@ export class ChatGPTBot {
   // receive a message (main entry)
   async onMessage(message: Message) {
     const talker = message.talker();
-    let rawText = message.text();
+    let rawText1 = message.text();
     const room = message.room();
     const messageType = message.type();
     const isPrivateChat = !room;
-    conv.push(rawText)
+    conv.push(rawText1)
     if(conv.length >=8){
       conv.shift();
     }
-    rawText = conv.join("\n ")
+    console.log("conv is ---- ")
+    console.log(conv)
+    var rawText:string;
+    rawText = conv.join("\n ");
     // do nothing if the message:
     //    1. is irrelevant (e.g. voice, video, location...), or
     //    2. doesn't trigger bot (e.g. wrong trigger-word)
