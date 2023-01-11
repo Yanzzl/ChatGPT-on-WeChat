@@ -17,7 +17,7 @@ const ChatGPTModelConfig = {
   top_p: 1,
   frequency_penalty: 0,
   presence_penalty: 0,
-  stop: "\n",
+  stop: ["\n"],
 };
 
 // message size for a single reply by the bot
