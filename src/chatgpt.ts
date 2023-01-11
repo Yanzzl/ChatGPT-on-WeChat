@@ -5,7 +5,7 @@ import { Configuration, OpenAIApi } from "openai";
 
 // ChatGPT error response configuration
 const chatgptErrorMessage = "🤖️：AI机器人摆烂了，请稍后再试～";
-var conv:string[];
+let conv:string[] = [];
 // ChatGPT model configuration
 // please refer to the OpenAI API doc: https://beta.openai.com/docs/api-reference/introduction
 const ChatGPTModelConfig = {
@@ -196,6 +196,7 @@ export class ChatGPTBot {
     if(conv.length >= 8){
       conv.shift();
     }
+
     await this.reply(room, result);
   }
 
