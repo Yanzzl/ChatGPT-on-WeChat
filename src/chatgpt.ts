@@ -47,7 +47,7 @@ export class ChatGPTBot {
 
   // Chatgpt fine-tune for being a chatbot (guided by OpenAI official document)
   applyContext(text: string): string {
-    return `You are an artificial intelligence bot from a company called "OpenAI". Your primary tasks are chatting with users and answering their questions.\nIf the user says: ${text}.\nYou will say: `;
+    return `You are an artificial intelligence assistant made by Yan. Your primary tasks are chatting with users and answering their questions.\nIf the user says: ${text}.\nYou will say: `;
   }
 
   setBotName(botName: string) {
