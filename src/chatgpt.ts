@@ -191,7 +191,7 @@ export class ChatGPTBot {
 
     conv.push(text.toString())
     if(conv.length >= 8){
-      conv.shift();tex
+      conv.shift();
     }
     var text1:string;
     text1 = conv.join("\n");
@@ -225,7 +225,7 @@ export class ChatGPTBot {
 
 
     // clean the message for ChatGPT input
-    const text = this.cleanMessage(rawText1, isPrivateChat);
+    const text = this.cleanMessage(rawText, isPrivateChat);
     // reply to private or group chat
     if (isPrivateChat) {
       return await this.onPrivateMessage(talker, text);
