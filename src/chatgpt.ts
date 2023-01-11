@@ -5,7 +5,7 @@ import { Configuration, OpenAIApi } from "openai";
 
 // ChatGPT error response configuration
 const chatgptErrorMessage = "🤖️：AI机器人摆烂了，请稍后再试～";
-
+var conv:string[];
 // ChatGPT model configuration
 // please refer to the OpenAI API doc: https://beta.openai.com/docs/api-reference/introduction
 const ChatGPTModelConfig = {
@@ -17,6 +17,7 @@ const ChatGPTModelConfig = {
   top_p: 1,
   frequency_penalty: 0,
   presence_penalty: 0,
+  stop: "\n",
 };
 
 // message size for a single reply by the bot
@@ -138,6 +139,7 @@ export class ChatGPTBot {
   // send question to ChatGPT with OpenAI API and get answer
   async onChatGPT(text: string): Promise<string> {
     const inputMessage = this.applyContext(text);
+    // const conversation = this.OpenAI.getConversation
     try {
       // config OpenAI API request body
       const response = await this.OpenAI.createCompletion({
@@ -190,16 +192,25 @@ export class ChatGPTBot {
     const chatgptReplyMessage = await this.onChatGPT(text);
     // the reply consist of: original text and bot reply
     const result = `${text}\n ---------- \n ${chatgptReplyMessage}`;
+    conv.push(text)
+    if(conv.length >= 8){
+      conv.shift();
+    }
     await this.reply(room, result);
   }
 
   // receive a message (main entry)
   async onMessage(message: Message) {
     const talker = message.talker();
-    const rawText = message.text();
+    let rawText = message.text();
     const room = message.room();
     const messageType = message.type();
     const isPrivateChat = !room;
+    conv.push(rawText)
+    if(conv.length >=8){
+      conv.shift();
+    }
+    rawText = conv.join("\n ")
     // do nothing if the message:
     //    1. is irrelevant (e.g. voice, video, location...), or
     //    2. doesn't trigger bot (e.g. wrong trigger-word)
