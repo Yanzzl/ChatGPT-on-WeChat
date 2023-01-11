@@ -192,7 +192,7 @@ export class ChatGPTBot {
     const chatgptReplyMessage = await this.onChatGPT(text);
     // the reply consist of: original text and bot reply
     const result = `${text}\n ---------- \n ${chatgptReplyMessage}`;
-    conv.push(text)
+    conv.push(chatgptReplyMessage.toString())
     if(conv.length >= 8){
       conv.shift();
     }
@@ -206,7 +206,7 @@ export class ChatGPTBot {
     const room = message.room();
     const messageType = message.type();
     const isPrivateChat = !room;
-    conv.push(rawText1)
+    conv.push(rawText1.toString())
     if(conv.length >=8){
       conv.shift();
     }
