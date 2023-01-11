@@ -41,6 +41,8 @@ async function main() {
           return;
         }
         // handle message for chatGPT bot
+        console.log(message.room())
+        console.log(typeof message.room())
         await chatGPTBot.onMessage(message);
       } catch (e) {
         console.error(`❌ ${e}`);
