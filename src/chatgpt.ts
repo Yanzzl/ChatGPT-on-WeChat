@@ -211,10 +211,12 @@ export class ChatGPTBot {
     if(conv.length >=8){
       conv.shift();
     }
+    console.log(rawText1)
     console.log("conv is ---- ")
     console.log(conv)
     var rawText:string;
     rawText = conv.join("\n ");
+    console.log(rawText)
     // do nothing if the message:
     //    1. is irrelevant (e.g. voice, video, location...), or
     //    2. doesn't trigger bot (e.g. wrong trigger-word)
