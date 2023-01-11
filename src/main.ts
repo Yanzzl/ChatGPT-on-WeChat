@@ -8,7 +8,7 @@ const weChatBot = WechatyBuilder.build({
   puppetOptions: {
     uos: true, // 开启uos协议
   },
-  puppet: "wechaty-puppet-wechat",
+  // puppet: "wechaty-puppet-wechat",
 });
 // ChatGPTBot instance
 const chatGPTBot = new ChatGPTBot();
