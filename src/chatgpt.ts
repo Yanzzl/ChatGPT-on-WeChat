@@ -12,7 +12,7 @@ const ChatGPTModelConfig = {
   // this model field is required
   model: "text-davinci-003",
   // add your ChatGPT model parameters below
-  temperature: 0.3,
+  temperature: 0.1,
   max_tokens: 256,
   top_p: 1,
   frequency_penalty: 0,
